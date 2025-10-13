@@ -37,11 +37,12 @@ export default function Home() {
                 HTML/CSS Rendering
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                📉 Custom layout engine. Limited CSS support.
+                📉 Harder to style. You need to learn a new way to write layouts
+                and styles, which is different from regular HTML and CSS.
               </td>
               <td className="border border-gray-300 px-4 py-2">
-                ✅ Easier to customize HTML and CSS. Allows creating a custom
-                DOM using browser's native rendering engine.
+                ✅ Easy to style. You can use regular HTML and CSS, just like
+                building a normal webpage.
               </td>
             </tr>
             <tr>
