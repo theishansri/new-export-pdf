@@ -50,7 +50,9 @@ const ChartPage: React.FC = () => {
   return (
     <div style={{ width: "80%", margin: "0 auto", padding: "20px" }}>
       <h1>Charts</h1>
-      <Bar data={data} options={options} />
+      <div className="graph-container">
+        <Bar data={data} options={options} />
+      </div>
     </div>
   );
 };

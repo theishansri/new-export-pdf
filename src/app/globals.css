@@ -24,3 +24,40 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Hide specific elements during printing */
+@media print {
+  main,
+  aside,
+  .content-section,
+  body {
+    page-break-inside: avoid;
+  }
+  * {
+    box-shadow: none !important;
+  }
+  @page {
+    margin: 0; /* Removes the default margins, including header and footer */
+  }
+
+  body {
+    margin: 1cm; /* Add custom margins for the printed content */
+  }
+
+  /* Scale down graphs for printing */
+  .graph-container,
+  .table-container {
+    transform: scale(0.5); /* Scale down the graph to 60% */
+    transform-origin: top left; /* Ensure scaling starts from the top-left corner */
+    width: 100%; /* Ensure the graph container fits within the page */
+    height: auto; /* Maintain aspect ratio */
+    margin: 0 auto; /* Center the graph */
+  }
+  .table-container {
+    transform: scale(1);
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+}

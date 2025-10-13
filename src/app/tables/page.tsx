@@ -2,7 +2,7 @@ import React from "react";
 
 const SampleTable: React.FC = () => {
   return (
-    <div style={{ padding: "20px" }}>
+    <div style={{ padding: "20px" }} className="table-container">
       <h1>Sample Table</h1>
       <table style={{ width: "100%", borderCollapse: "collapse" }}>
         <thead>

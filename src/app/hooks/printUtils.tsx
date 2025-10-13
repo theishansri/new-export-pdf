@@ -2,8 +2,15 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 import PrintContent from "../components/PrintContent"; // Adjust the path as needed
 
-export const handlePrint = () => {
+export const handlePrint = (option: "currentPage" | "wholeReport") => {
+  if (option === "currentPage") {
+    // Use window.print() to print the current page
+    window.print();
+    return;
+  }
+
   try {
+    // Open a new tab for the whole report
     const printWindow = window.open("", "_blank", "width=800,height=600");
 
     if (!printWindow) {
@@ -24,52 +31,30 @@ export const handlePrint = () => {
         font-family: Arial, sans-serif;
         margin: 20px;
       }
-      h2 {
-        text-align: center;
-      }
-      @page {
-        size: auto;
-        margin: 0;
-      }
-      table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-      }
-      table, th, td {
-        border: 1px solid black;
-      }
-      th, td {
-        padding: 8px;
-        text-align: left;
-      }
     `;
     printWindow.document.head.appendChild(style);
 
     // Render the React component into the new window
     const root = createRoot(container);
-    root.render(<PrintContent />);
+    root.render(<PrintContent />); // Render the whole report content
 
     // Trigger the print dialog after a short delay
     setTimeout(() => {
-      printWindow.focus(); // Ensure the new window is focused
-      printWindow.print(); // Trigger the print dialog
+      printWindow.focus();
+      printWindow.print();
 
       // Ensure the new tab is closed after the print dialog is dismissed
       const closeWindow = () => {
-        console.log("Closing print window...");
-        root.unmount(); // Clean up React root
-        printWindow.close(); // Close the print window
+        root.unmount();
+        printWindow.close();
       };
 
-      // Use onafterprint if supported
       if (typeof printWindow.onafterprint !== "undefined") {
         printWindow.onafterprint = closeWindow;
       } else {
-        // Fallback: Close the window after a delay
         setTimeout(closeWindow, 500);
       }
-    }, 200); // Adjust the delay as needed
+    }, 200);
   } catch (error) {
     console.error("An error occurred while handling print:", error);
   }
