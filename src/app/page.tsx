@@ -10,73 +10,84 @@ export default function Home() {
           PDF Generation Evaluation
         </h1>
         <p>We evaluated two approaches already available in Classic Sphere:</p>
-        <ul className="list-disc pl-6 space-y-2">
-          <li>
-            <strong>@react-pdf/renderer (React PDF)</strong>
-          </li>
-          <li>
-            <strong>Print Manager (browser-based window.print())</strong>
-          </li>
-        </ul>
+        <table className="table-auto border-collapse border border-gray-300 w-full text-left text-sm">
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="border border-gray-300 px-4 py-2">Feature</th>
+              <th className="border border-gray-300 px-4 py-2">React PDF</th>
+              <th className="border border-gray-300 px-4 py-2">
+                Print Manager
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">
+                Chart/Canvas Support
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ❌ Limited support. Requires converting charts to images.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ✅ Fully supported. Uses native browser rendering.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">
+                HTML/CSS Rendering
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                📉 Custom layout engine. Limited CSS support.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ✅ Easier to customize HTML and CSS. Allows creating a custom
+                DOM using browser's native rendering engine.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">
+                Accessibility
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ♿ No built-in support for semantic tags or ARIA.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                ✅ Preserves basic accessibility if the source document is
+                accessible.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Library Size</td>
+              <td className="border border-gray-300 px-4 py-2">
+                📄 React PDF: Minified size ~1.2 MB, Gzipped size ~300 KB.
+                <br />
+                HTML Canvas: Minified size ~150 KB, Gzipped size ~50 KB.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                📄 No additional library required. Uses browser's built-in
+                print-to-PDF feature.
+              </td>
+            </tr>
+            <tr>
+              <td className="border border-gray-300 px-4 py-2">Dependencies</td>
+              <td className="border border-gray-300 px-4 py-2">
+                Requires <code>@react-pdf/renderer</code> and optionally{" "}
+                <code>html2canvas</code>.
+              </td>
+              <td className="border border-gray-300 px-4 py-2">
+                No external dependencies. Uses <code>window.print()</code>.
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-        <h2 className="text-xl font-semibold mt-6">
-          Limitations of React PDF Renderer
-        </h2>
-        <p>
-          While React PDF (<code>@react-pdf/renderer</code>) offers a React-like
-          API for generating PDFs, it has several drawbacks for dynamic, visual,
-          and accessible documents:
+        {/* Note below the table */}
+        <p className="text-sm text-gray-600 mt-4">
+          <strong>Note:</strong> For heavier data (e.g., large tables or many
+          charts), the performance of both libraries can be on the slower side.
+          Consider optimizing the data or using a server-side solution for
+          better performance.
         </p>
-        <ul className="list-disc pl-6 space-y-2">
-          <li>
-            <strong>❌ Limited chart/canvas support:</strong> It doesn’t
-            natively render elements that use the HTML{" "}
-            <code>&lt;canvas&gt;</code> API (e.g., Chart.js, Recharts, D3). To
-            include charts, you must capture them as images (e.g., via{" "}
-            <code>html2canvas</code> or <code>canvas.toDataURL()</code>), which
-            adds complexity and can reduce quality.
-          </li>
-          <li>
-            <strong>📉 No true HTML/CSS rendering:</strong> It uses its own
-            layout engine rather than the browser’s. Advanced CSS, flex
-            behavior, and precise layouts—especially for responsive
-            charts/tables—often won’t match the live web UI.
-          </li>
-          <li>
-            <strong>♿ Lack of accessibility:</strong> It does not produce
-            tagged/accessible PDFs. There’s no built-in support for semantic
-            tags, alt text, reading order, or ARIA, limiting screen-reader
-            compatibility.
-          </li>
-          <li>
-            <strong>📄 Larger files & performance overhead:</strong> Because
-            visuals are embedded as images, file sizes increase. Rendering all
-            components before PDF generation can be slow for documents with many
-            visuals.
-          </li>
-        </ul>
-
-        <h2 className="text-xl font-semibold mt-6">
-          Print Manager (Browser Print) – Summary
-        </h2>
-        <ul className="list-disc pl-6 space-y-2">
-          <li>
-            <strong>How it works:</strong> Uses the built-in browser print
-            function (<code>window.print()</code>), so no external library is
-            required.
-          </li>
-          <li>
-            <strong>Accessibility:</strong> Preserves basic accessibility if the
-            source document is already accessible (semantic HTML, proper
-            headings/alt text, logical reading order).
-          </li>
-          <li>
-            <strong>Performance caveat:</strong> Printing heavy or complex pages
-            can be sluggish and may appear to hang. Use print-optimized styles (
-            <code>@media print</code>) to hide non-essential UI and simplify
-            layouts where possible.
-          </li>
-        </ul>
 
         <h2 className="text-xl font-semibold mt-6">Recommendation for MVP</h2>
         <p>
