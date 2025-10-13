@@ -28,7 +28,7 @@ export default function RootLayout({
         <nav className="flex items-center justify-between px-8 py-4 bg-white shadow-md sticky top-0 z-50">
           {/* Left: App Title */}
           <div className="text-lg font-semibold text-gray-800">
-            Export PDF App
+            <Link href={"/"}> Export PDF App </Link>
           </div>
 
           {/* Center: Navigation Links */}

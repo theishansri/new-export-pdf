@@ -54,11 +54,22 @@ export const handlePrint = () => {
     setTimeout(() => {
       printWindow.focus(); // Ensure the new window is focused
       printWindow.print(); // Trigger the print dialog
-      printWindow.onafterprint = () => {
+
+      // Ensure the new tab is closed after the print dialog is dismissed
+      const closeWindow = () => {
+        console.log("Closing print window...");
         root.unmount(); // Clean up React root
         printWindow.close(); // Close the print window
       };
-    }, 100); // Adjust the delay as needed
+
+      // Use onafterprint if supported
+      if (typeof printWindow.onafterprint !== "undefined") {
+        printWindow.onafterprint = closeWindow;
+      } else {
+        // Fallback: Close the window after a delay
+        setTimeout(closeWindow, 500);
+      }
+    }, 200); // Adjust the delay as needed
   } catch (error) {
     console.error("An error occurred while handling print:", error);
   }
