@@ -57,7 +57,7 @@ export default function ClientLayoutWrapper({
             {Array.from({ length: 20 }, (_, index) => (
               <Link
                 key={index}
-                href={`/ad-group/${index + 1}`}
+                href={`#`}
                 className="hover:text-blue-600 transition"
               >
                 Ad group {index + 1}

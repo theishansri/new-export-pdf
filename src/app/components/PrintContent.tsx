@@ -1,8 +1,8 @@
 import React from "react";
-import TableComponent from "../tables/page";
-import ChartComponent from "@/app/charts/page";
-import GraphPage from "../graph/page";
-import AdGroupDetails from "@/app/ad-group/[id]/page"; // Import the Ad Group Details component
+// import TableComponent from "../tables/page";
+// import ChartComponent from "@/app/charts/page";
+// import GraphPage from "../graph/page";
+import AdGroupDetails from "@/app/ad-group/components/AdGroupDetails"; // Import the Ad Group Details component
 import Shoppers from "@/app/shoppers/page"; // Import the Shoppers component
 import Target from "@/app/target/page"; // Import the Target component
 import Product from "@/app/product/page"; // Import the Product component
@@ -46,7 +46,8 @@ const PrintContent: React.FC = () => {
           {Array.from({ length: 20 }, (_, index) => (
             <div key={index} className="mb-4">
               <h3 className="text-lg font-medium">Ad Group {index + 1}</h3>
-              <AdGroupDetails /> {/* Pass the Ad Group ID as a prop */}
+              <AdGroupDetails id={index + 1} />{" "}
+              {/* Pass the Ad Group ID as a prop */}
             </div>
           ))}
         </div>
