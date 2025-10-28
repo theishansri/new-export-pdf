@@ -54,7 +54,7 @@ export const handlePrint = (option: "currentPage" | "wholeReport") => {
       } else {
         setTimeout(closeWindow, 500);
       }
-    }, 200);
+    }, 1000);
   } catch (error) {
     console.error("An error occurred while handling print:", error);
   }

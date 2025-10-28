@@ -1,6 +1,8 @@
 import React from "react";
 import ChartPage from "../charts/page";
 import SampleTable from "../tables/page";
+import Campaign from "./Campaign";
+import GraphPage from "../graph/page";
 
 const Details: React.FC = () => {
   return (
@@ -11,7 +13,13 @@ const Details: React.FC = () => {
         include in the PDF.
       </div>
       <div className="mt-[32px] mb-[32px]">
+        <Campaign />
+      </div>
+      <div className="mt-[32px] mb-[32px]">
         <ChartPage />
+      </div>
+      <div className="mt-[32px] mb-[32px]">
+        <GraphPage />
       </div>
       <div className="mt-[32px] mb-[32px]">
         <SampleTable />

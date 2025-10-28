@@ -54,14 +54,29 @@ export default function ClientLayoutWrapper({
 
         {pathname === "/print" && (
           <nav className="flex flex-col space-y-4 p-4 text-gray-700">
-            <Link href="/tables" className="hover:text-blue-600 transition">
-              Table
+            {Array.from({ length: 20 }, (_, index) => (
+              <Link
+                key={index}
+                href={`/ad-group/${index + 1}`}
+                className="hover:text-blue-600 transition"
+              >
+                Ad group {index + 1}
+              </Link>
+            ))}
+            <Link href="/shoppers" className="hover:text-blue-600 transition">
+              Shoppers
             </Link>
-            <Link href="/charts" className="hover:text-blue-600 transition">
-              Charts
+            <Link href="/target" className="hover:text-blue-600 transition">
+              Target
             </Link>
-            <Link href="/graph" className="hover:text-blue-600 transition">
-              Graphs
+            <Link href="/product" className="hover:text-blue-600 transition">
+              Product
+            </Link>
+            <Link
+              href="/recommendations"
+              className="hover:text-blue-600 transition"
+            >
+              Recommendations
             </Link>
           </nav>
         )}
