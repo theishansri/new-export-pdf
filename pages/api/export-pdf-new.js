@@ -97,7 +97,7 @@ export default async function handler(req, res) {
         responseType: "arraybuffer",
       }
     );
-    console.log("PDF Response:", pdfResponse.status, pdfResponse.headers);
+    console.log("PDF Response:", pdfResponse.status, pdzfResponse.headers);
 
     res.setHeader("Content-Type", "application/pdf");
     res.setHeader("Content-Disposition", "attachment; filename=report.pdf");

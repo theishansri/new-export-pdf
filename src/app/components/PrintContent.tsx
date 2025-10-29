@@ -2,7 +2,7 @@ import React from "react";
 // import TableComponent from "../tables/page";
 // import ChartComponent from "@/app/charts/page";
 // import GraphPage from "../graph/page";
-import AdGroupDetails from "@/app/ad-group/components/AdGroupDetails"; // Import the Ad Group Details component
+import AdGroupDetails from "@/app/components/AdGroupDetails"; // Import the Ad Group Details component
 import Shoppers from "@/app/shoppers/page"; // Import the Shoppers component
 import Target from "@/app/target/page"; // Import the Target component
 import Product from "@/app/product/page"; // Import the Product component

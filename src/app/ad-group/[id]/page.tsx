@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useParams } from "next/navigation";
-import AdGroupDetails from "../components/AdGroupDetails";
+import AdGroupDetails from "../../components/AdGroupDetails";
 
 const AdGroup: React.FC = () => {
   const params = useParams(); // Extract dynamic parameters from the URL
